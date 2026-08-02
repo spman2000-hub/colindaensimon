@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Colinda en Simon//Bruiloft 2026//NL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:bruiloft-colinda-simon-20261003@colindaensimon.nl
+DTSTAMP:20260713T120000Z
+DTSTART;TZID=Europe/Amsterdam:20261003T130000
+DTEND;TZID=Europe/Amsterdam:20261003T233000
+SUMMARY:Bruiloft Colinda & Simon
+LOCATION:Oranjerie Hydepark\, Hydeparklaan 10\, 3941 ZJ Doorn
+DESCRIPTION:De bruiloft van Colinda en Simon. Ontvangst daggasten vanaf 13:00 uur\, ceremonie om 13:30 uur en ontvangst avondgasten vanaf 18:45 uur. De openingsdans en het feest beginnen om 19:15 uur.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
