@@ -267,6 +267,23 @@
     if (!response.ok) throw new Error(`RSVP endpoint gaf status ${response.status}`);
   }
 
+  async function submitToGoogleSheets(data) {
+    const endpoint = config.rsvpEndpoint?.trim();
+    if (!endpoint || !endpoint.startsWith("https://script.google.com/macros/s/")) {
+      throw new Error("Vul de Google Apps Script-webapp-URL in site-config.js in.");
+    }
+
+    await fetch(endpoint, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        ...data,
+        bron: window.location.href,
+      }),
+    });
+  }
+
   async function submitToNetlify(data) {
     const body = new URLSearchParams({
       "form-name": "bruiloft-rsvp",
@@ -313,6 +330,11 @@
 
     try {
       switch (activeRsvpProvider) {
+        case "google-sheets":
+          await submitToGoogleSheets(data);
+          clearDraftAfterSuccess();
+          openDialog("Jullie antwoord is ontvangen. We kijken ernaar uit om samen te vieren.");
+          break;
         case "netlify":
           await submitToNetlify(data);
           clearDraftAfterSuccess();
