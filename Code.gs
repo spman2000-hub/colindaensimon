@@ -10,9 +10,11 @@ const RSVP_SETTINGS = Object.freeze({
 const RSVP_HEADERS = Object.freeze([
   "Ontvangen op",
   "Naam / namen",
+  "Gasttype",
   "Aanwezigheid",
   "Aantal gasten",
   "E-mailadres",
+  "Mobiel nummer",
   "Dieetwensen / allergieën",
   "Overnachting",
   "Muziektip",
@@ -57,9 +59,9 @@ function doPost(event) {
 
     try {
       sendNotification_(data);
-      rowInfo.sheet.getRange(rowInfo.row, 12).setValue("Verzonden");
+      rowInfo.sheet.getRange(rowInfo.row, 14).setValue("Verzonden");
     } catch (mailError) {
-      rowInfo.sheet.getRange(rowInfo.row, 12).setValue(`Mislukt: ${mailError.message}`);
+      rowInfo.sheet.getRange(rowInfo.row, 14).setValue(`Mislukt: ${mailError.message}`);
       console.error(mailError);
     }
 
@@ -85,7 +87,7 @@ function parsePayload_(event) {
 }
 
 function validatePayload_(data) {
-  const required = ["namen", "aanwezigheid", "email", "privacy_akkoord"];
+  const required = ["namen", "gasttype", "aanwezigheid", "email", "telefoon", "privacy_akkoord"];
   required.forEach((field) => {
     if (!data[field]) throw new Error(`Verplicht veld ontbreekt: ${field}`);
   });
@@ -95,8 +97,16 @@ function validatePayload_(data) {
     throw new Error("Ongeldige aanwezigheidskeuze.");
   }
 
+  if (!["Daggast", "Avondgast"].includes(data.gasttype)) {
+    throw new Error("Ongeldig gasttype.");
+  }
+
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email))) {
     throw new Error("Ongeldig e-mailadres.");
+  }
+
+  if (!/^[+\d][\d\s().-]{7,}$/.test(String(data.telefoon))) {
+    throw new Error("Ongeldig mobiel nummer.");
   }
 }
 
@@ -118,9 +128,11 @@ function appendRsvp_(data) {
     const values = [[
       new Date(),
       sheetValue_(data.namen),
+      sheetValue_(data.gasttype),
       sheetValue_(data.aanwezigheid),
       sheetValue_(data.aantal_gasten),
       sheetValue_(data.email),
+      sheetValue_(data.telefoon),
       sheetValue_(data.dieetwensen),
       sheetValue_(data.overnachting),
       sheetValue_(data.muziektip),
@@ -159,23 +171,27 @@ function formatSheet_(sheet) {
   sheet.getRange("A:A").setNumberFormat("dd-mm-yyyy hh:mm");
   sheet.setColumnWidth(1, 145);
   sheet.setColumnWidth(2, 190);
-  sheet.setColumnWidth(3, 155);
-  sheet.setColumnWidth(5, 220);
-  sheet.setColumnWidth(6, 230);
-  sheet.setColumnWidth(7, 210);
-  sheet.setColumnWidth(8, 210);
-  sheet.setColumnWidth(9, 320);
-  sheet.setColumnWidth(11, 260);
-  sheet.setColumnWidth(12, 150);
+  sheet.setColumnWidth(3, 105);
+  sheet.setColumnWidth(4, 155);
+  sheet.setColumnWidth(6, 220);
+  sheet.setColumnWidth(7, 150);
+  sheet.setColumnWidth(8, 230);
+  sheet.setColumnWidth(9, 210);
+  sheet.setColumnWidth(10, 210);
+  sheet.setColumnWidth(11, 320);
+  sheet.setColumnWidth(13, 260);
+  sheet.setColumnWidth(14, 150);
 }
 
 function sendNotification_(data) {
-  const subject = `Nieuwe RSVP: ${textValue_(data.namen)} · ${textValue_(data.aanwezigheid)}`;
+  const subject = `Nieuwe RSVP ${textValue_(data.gasttype)}: ${textValue_(data.namen)} · ${textValue_(data.aanwezigheid)}`;
   const fields = [
     ["Naam / namen", data.namen],
+    ["Gasttype", data.gasttype],
     ["Aanwezigheid", data.aanwezigheid],
     ["Aantal gasten", data.aantal_gasten],
     ["E-mailadres", data.email],
+    ["Mobiel nummer", data.telefoon],
     ["Dieetwensen / allergieën", data.dieetwensen],
     ["Overnachting", data.overnachting],
     ["Muziektip", data.muziektip],

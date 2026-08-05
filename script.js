@@ -22,7 +22,7 @@
   const attendanceInputs = [...document.querySelectorAll('input[name="aanwezigheid"]')];
   const attendeeControls = [...document.querySelectorAll(".attendee-only input, .attendee-only select")];
   const guestCount = document.querySelector("#guest-count");
-  const draftKey = "colinda-simon-rsvp-draft";
+  const draftKey = "colinda-simon-rsvp-daggasten-draft";
   const isLocalPreview =
     window.location.protocol === "file:" ||
     ["localhost", "127.0.0.1"].includes(window.location.hostname);
@@ -159,9 +159,11 @@
   function createSummary(data) {
     const labels = {
       namen: "Naam / namen",
+      gasttype: "Gasttype",
       aanwezigheid: "Aanwezigheid",
       aantal_gasten: "Aantal gasten",
       email: "E-mailadres",
+      telefoon: "Mobiel nummer",
       dieetwensen: "Dieetwensen / allergieën",
       overnachting: "Overnachting",
       muziektip: "Muziektip",
@@ -298,7 +300,7 @@
   }
 
   function submitByEmail(data) {
-    const subject = encodeURIComponent(`RSVP bruiloft Colinda & Simon · ${data.namen}`);
+    const subject = encodeURIComponent(`RSVP ${data.gasttype || "gast"} · Colinda & Simon · ${data.namen}`);
     const body = encodeURIComponent(latestSummary);
     window.location.href = `mailto:${encodeURIComponent(config.rsvpEmail)}?subject=${subject}&body=${body}`;
   }
@@ -396,7 +398,7 @@
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "rsvp-colinda-simon.txt";
+    link.download = "rsvp-colinda-simon-daggast.txt";
     link.click();
     URL.revokeObjectURL(url);
   });

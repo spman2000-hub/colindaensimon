@@ -5,7 +5,7 @@ De backend is ingesteld voor deze ontvangers:
 - `colinda1994@hotmail.com`
 - `simonpolman14@gmail.com`
 
-Iedere geldige RSVP wordt als nieuwe rij opgeslagen en naar beide adressen gemaild.
+Iedere geldige RSVP, inclusief het gasttype, e-mailadres en mobiel nummer, wordt als nieuwe rij opgeslagen en naar beide adressen gemaild. Deze website verstuurt automatisch het gasttype **Daggast**.
 
 ## 1. Google Sheet aanmaken
 

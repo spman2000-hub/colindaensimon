@@ -510,9 +510,8 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 48% center;
+  object-position: center center;
   filter: saturate(0.94) contrast(1.02);
-  transform: scale(1.01);
 }
 
 .hero-photo-caption {
@@ -737,19 +736,20 @@ h2 em {
 
 .mood {
   display: grid;
-  max-width: 1500px;
+  max-width: 1350px;
   margin: 0 auto;
   padding-top: clamp(70px, 9vw, 130px);
-  grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
   gap: clamp(55px, 8vw, 120px);
   align-items: center;
 }
 
 .mood-photo {
   position: relative;
-  min-height: 620px;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
   background: var(--paper-deep);
-  box-shadow: var(--shadow);
+  box-shadow: 0 22px 55px rgba(48, 30, 24, 0.14);
   overflow: hidden;
 }
 
@@ -765,10 +765,10 @@ h2 em {
 .mood-photo img {
   width: 100%;
   height: 100%;
-  min-height: 620px;
+  min-height: 0;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.94) contrast(1.03);
+  filter: saturate(0.88) contrast(1.01) brightness(1.02);
   transition: transform 900ms var(--ease);
 }
 
@@ -778,17 +778,17 @@ h2 em {
 
 .photo-label {
   position: absolute;
-  right: 32px;
-  bottom: 30px;
+  right: 26px;
+  bottom: 24px;
   z-index: 3;
   padding: 8px 12px;
   color: var(--cream);
-  background: rgba(74, 24, 37, 0.74);
+  background: rgba(74, 24, 37, 0.62);
   font-size: 8px;
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
 }
 
 .mood-copy h2 {
@@ -1340,6 +1340,40 @@ h2 em {
   font-weight: 400;
 }
 
+.parking-note {
+  display: grid;
+  width: fit-content;
+  margin: -12px 0 30px;
+  grid-template-columns: 38px auto;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.parking-note > span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  grid-row: 1 / span 2;
+  color: var(--vermilion);
+  border: 1px solid rgba(196, 81, 32, 0.35);
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 17px;
+}
+
+.parking-note strong {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.parking-note small {
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
 .location-actions {
   display: flex;
   align-items: center;
@@ -1467,12 +1501,25 @@ h2 em {
   font-weight: 400;
 }
 
-.planner-copy p:last-child {
+.planner-copy > p:not(.planner-label) {
   max-width: 710px;
   margin: 0;
   color: rgba(255, 253, 247, 0.72);
   font-size: 13px;
   line-height: 1.7;
+}
+
+.planner-deadline {
+  display: block;
+  width: fit-content;
+  margin-top: 14px;
+  padding: 8px 11px;
+  color: var(--forest);
+  background: var(--champagne);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .planner-contact {
@@ -1963,10 +2010,6 @@ h2 em {
 
 .rsvp-form.is-absent .attendee-only {
   display: none;
-}
-
-.rsvp-form.is-absent .email-field {
-  grid-column: 1 / -1;
 }
 
 .choice-grid label {
@@ -2604,7 +2647,7 @@ h2 em {
   }
 
   .hero-photo img {
-    object-position: 45% center;
+    object-position: 70% center;
   }
 
   .hero-photo-caption {
@@ -2660,9 +2703,13 @@ h2 em {
     gap: 44px;
   }
 
-  .mood-photo,
+  .mood-photo {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
   .mood-photo img {
-    min-height: 430px;
+    min-height: 0;
   }
 
   .palette {

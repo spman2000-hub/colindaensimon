@@ -1,21 +1,22 @@
-# Bruiloftssite Colinda & Simon
+# Bruiloftssite Colinda & Simon · daggasten
 
-Een complete, responsive one-page website voor de bruiloft op zaterdag 3 oktober 2026 bij Oranjerie Hydepark in Doorn.
+De complete, responsive daggastenwebsite voor de bruiloft op zaterdag 3 oktober 2026 bij Oranjerie Hydepark in Doorn. Deze versie verwelkomt gasten vanaf 13:00 uur en staat los van de later te maken avondgastenwebsite.
 
 ## Inhoud
 
 - Persoonlijke aquarel van het aanzoek bij Mount Fuji als openingsbeeld
 - Originele aanzoekfoto en een fotogestuurd verhaalblok
-- Sfeerbeeld en afwisselende aquareldecoraties met Japanse esdoorn, sakura en orchidee, waarbij de takken vanuit de paginaranden naar binnen hangen
+- Subtiel sfeerbeeld van de Japanse herfsttafel en afwisselende aquareldecoraties met Japanse esdoorn, sakura en orchidee, waarbij de takken vanuit de paginaranden naar binnen hangen
 - Groot locatiebeeld van de Oranjerie door de begroeide boogentunnel
-- Geïllustreerde dagplanning van 13:00 tot 23:30 uur, met toegankelijke tekstversie
-- Locatie, routeknoppen, dresscode en praktische afspraken
-- Contactpassage voor weddingplanner Els Vlieger bij verzoekjes en stukjes
+- Geïllustreerde dagplanning van 13:00 tot 23:30 uur, met ontvangst van avondgasten om 19:00 uur en een toegankelijke tekstversie
+- Locatie, gratis parkeerinformatie, routeknoppen, dresscode en praktische afspraken
+- Contactpassage voor weddingplanner Els Vlieger bij verzoekjes en stukjes, met deadline 01 september 2026
 - Accommodatie-informatie voor Landgoed de Horst
 - Cadeautip voor de geplande huwelijksreis door Zuid-Afrika, Madagaskar en de Seychellen, met een eigen sfeerbeeld per bestemming
-- Responsive RSVP-formulier met Google Sheets-opslag, e-mailmeldingen en conceptopslag
-- RSVP vraagt alleen aanwezigheid; de keuze voor daggast of avondgast volgt de save the date
+- Responsive RSVP-formulier met verplicht e-mailadres en mobiel nummer, Netlify Forms-opslag en conceptopslag
+- RSVP vraagt alleen aanwezigheid en registreert iedere reactie automatisch als daggast
 - Agenda-download in iCalendar-formaat
+- Brede tafelfoto als afsluitend sfeerbeeld
 - Mobiele navigatie, toegankelijke formulieren en subtiele scrollanimaties
 - Printvriendelijke basisopmaak
 
