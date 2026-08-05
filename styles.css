@@ -2628,8 +2628,32 @@ h2 em {
 }
 
 @media (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   body {
     font-size: 15px;
+  }
+
+  .site-header {
+    min-height: 68px;
+    padding: 10px 18px;
+  }
+
+  .site-header.scrolled {
+    min-height: 64px;
+  }
+
+  .brand-mark {
+    font-size: 29px;
+  }
+
+  .brand-mark span {
+    font-size: 18px;
   }
 
   .brand-date {
@@ -2637,7 +2661,8 @@ h2 em {
   }
 
   .hero {
-    min-height: 790px;
+    min-height: 100svh;
+    padding: 96px 20px 64px;
   }
 
   .hero-wash {
@@ -2659,16 +2684,38 @@ h2 em {
   }
 
   .hero h1 {
-    font-size: clamp(66px, 22vw, 90px);
+    margin-top: 22px;
+    font-size: clamp(62px, 20vw, 82px);
+    line-height: 0.8;
   }
 
   .hero-date {
-    margin-top: 27px;
-    font-size: 20px;
+    margin-top: 24px;
+    font-size: clamp(18px, 5.5vw, 21px);
   }
 
   .hero-location {
-    max-width: 250px;
+    max-width: none;
+    margin-bottom: 26px;
+    font-size: 9px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: grid;
+    width: 100%;
+    max-width: 530px;
+    gap: 17px;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .hero-calendar {
+    width: fit-content;
   }
 
   .hero-art {
@@ -2684,11 +2731,27 @@ h2 em {
   .gift h2,
   .rsvp h2,
   .closing h2 {
-    font-size: clamp(45px, 14vw, 66px);
+    font-size: clamp(42px, 12.5vw, 58px);
+  }
+
+  .section {
+    padding: 68px 20px;
+  }
+
+  .section-heading h2 {
+    max-width: 100%;
+    font-size: clamp(38px, 11vw, 50px);
+    letter-spacing: -0.045em;
+    overflow-wrap: anywhere;
+  }
+
+  .section-heading > p:last-child {
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .proposal-memory {
-    margin-top: 65px;
+    margin-top: 50px;
   }
 
   .proposal-memory-photo {
@@ -2700,12 +2763,14 @@ h2 em {
   }
 
   .mood {
-    gap: 44px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    gap: 32px;
   }
 
   .mood-photo {
     min-height: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
   }
 
   .mood-photo img {
@@ -2713,8 +2778,18 @@ h2 em {
   }
 
   .palette {
-    grid-template-columns: repeat(2, minmax(118px, 1fr));
+    margin-top: 32px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 13px;
+  }
+
+  .palette > li {
+    min-width: 0;
+  }
+
+  .palette span {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .countdown {
@@ -2739,12 +2814,23 @@ h2 em {
   }
 
   .section-heading.centered {
-    margin-bottom: 50px;
+    margin-bottom: 34px;
   }
 
   .program {
-    padding-right: 18px;
-    padding-left: 18px;
+    padding: 64px 18px 70px;
+  }
+
+  .program .section-heading h2 {
+    font-size: clamp(36px, 10.3vw, 48px);
+    line-height: 1;
+    white-space: normal;
+  }
+
+  .program-poster {
+    width: min(100%, 390px);
+    padding: 6px;
+    box-shadow: 0 22px 52px rgba(17, 5, 9, 0.3);
   }
 
   .timeline::before {
@@ -2799,6 +2885,7 @@ h2 em {
   }
 
   .practical-grid {
+    margin-top: 55px;
     grid-template-columns: 1fr;
   }
 
@@ -2818,7 +2905,13 @@ h2 em {
 
   .planner-contact {
     width: 100%;
+    min-width: 0;
     grid-column: auto;
+  }
+
+  .planner-contact a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .stay-card dl > div {
@@ -2839,7 +2932,7 @@ h2 em {
   }
 
   .gift-visual {
-    min-height: 475px;
+    min-height: 430px;
   }
 
   .gift-photo-main {
@@ -2869,8 +2962,8 @@ h2 em {
   }
 
   .rsvp-form-wrap {
-    margin-right: -8px;
-    margin-left: -8px;
+    margin: 0;
+    padding: 24px 18px;
   }
 
   .rsvp-form {
@@ -2881,6 +2974,13 @@ h2 em {
   .form-footer.full,
   .form-status.full {
     grid-column: auto;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    min-width: 0;
+    font-size: 16px;
   }
 
   .choice-grid {
@@ -2905,9 +3005,9 @@ h2 em {
   }
 
   .closing {
-    min-height: 620px;
-    padding-top: 90px;
-    padding-bottom: 90px;
+    min-height: 520px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .closing-sun {
@@ -2924,6 +3024,44 @@ h2 em {
 
   .rsvp-dialog {
     padding: 45px 24px 32px;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 19vw, 74px);
+  }
+
+  .hero .eyebrow,
+  .eyebrow {
+    gap: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  .eyebrow span {
+    width: 24px;
+  }
+
+  .section-heading h2,
+  .program .section-heading h2 {
+    font-size: clamp(34px, 10vw, 40px);
+  }
+
+  .countdown strong {
+    font-size: 30px;
+  }
+
+  .gift-visual {
+    min-height: 390px;
+  }
+
+  .rsvp-form-wrap {
+    padding: 21px 15px;
   }
 }
 
